@@ -1,12 +1,39 @@
 import React from 'react';
+import CabinCanvasTexture from './CabinCanvasTexture';
+import CabinCanvasTextureSide from './CabinCanvasTextureSide';
+import { Vector2 } from 'three';
 
 function Cabin(props) {
+    
+
     return (
-        <mesh position={props?.position}>
-        <boxGeometry attach="geometry" args={props?.args || [33, 12, 24]}/>
-        <meshLambertMaterial attach="material" color={props?.color || 0xffffff} />
-        
-    </mesh>
+        <mesh position={props?.position} >
+            <boxGeometry attach="geometry" args={props?.args || [33, 12, 24]}/>
+            {/* Front */}
+            <meshLambertMaterial attach="material-0" >
+                <CabinCanvasTexture />
+            </meshLambertMaterial>
+            {/* back */}
+            <meshLambertMaterial attach="material-1">
+                <CabinCanvasTexture />
+            </meshLambertMaterial>
+            {/* top */}
+            <meshLambertMaterial attach="material-2" color="0xffffff" />
+            {/* bottom */}
+            <meshLambertMaterial attach="material-3" color="0xffffff" />
+            {/* left */}
+            <meshLambertMaterial attach="material-4" > 
+                <CabinCanvasTextureSide otherProps={{
+                    center: new Vector2(0.5, 0.5),
+                    rotation: Math.PI,
+                    flipY: false
+                }}/>
+            </meshLambertMaterial>
+            {/* right */}
+            <meshLambertMaterial attach="material-5" >
+                <CabinCanvasTextureSide />
+            </meshLambertMaterial>
+        </mesh>
     );
 }
 
