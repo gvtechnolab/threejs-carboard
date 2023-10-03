@@ -8,16 +8,16 @@ function CabinCanvasTexture(props) {
     React.useLayoutEffect(() => {
         const canvas = canvasRef.current;
 
-        canvas.width = 64;
-        canvas.height = 32;
+        canvas.width = 70;
+        canvas.height = 70;
 
         const context = canvas.getContext("2d");
         if (context) {
             context.fillStyle = "#ffffff";
-            context.fillRect(0, 0, 64, 32);
+            context.fillRect(0, 0, 70, 70);
           
             context.fillStyle = "#666666";
-            context.fillRect(8, 8, 48, 24);
+            context.fillRect(4, 4, 60, 60);
           
         }
     }, []);
